@@ -1,7 +1,8 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const app = express();
+const PORT = process.env.PORT || 5000;
+const router = require('./routes/router');
 
 // Setup body parser - to translating request body into JSON
 app.use(bodyParser.urlencoded({ extended: true }));
@@ -16,7 +17,7 @@ let router = require('./routes/router');
 app.use('/songs', router);
 
 
-const PORT = 5000;
+
 app.listen(PORT, () => {
     console.log('up and running on port', PORT);
 });
