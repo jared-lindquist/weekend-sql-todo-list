@@ -24,10 +24,24 @@ router.get('/', (req, res) => {
     })
 })
 
-
-
 //POST
-
+router.post('/', (req, res) => {
+    let newTodo = req.body;
+    console.log('adding new todo', newTodo);
+    let queryText = `INSERT INTO  "todo" ("list_item", "complete")
+                        VALUES($1, $2)`;
+    pool.query(queryText, [
+            newTodo.list_item,
+            newTodo.complete
+])
+.then((result) => {
+        res.sendStatus(201);
+    })
+    .catch((err) => {
+        console.log('error adding new Koala', err);
+        res.sendStatus(500);
+    });
+});
 
 
 //PUT

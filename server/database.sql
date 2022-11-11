@@ -1,6 +1,6 @@
 CREATE TABLE "todo" (
 	"id" serial primary key,
-	"list_item" varchar(100) not null,
+	"list_item" varchar(100),
 	"complete" BOOLEAN DEFAULT false
 );
 INSERT INTO "todo"
