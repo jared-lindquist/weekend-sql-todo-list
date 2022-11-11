@@ -1,22 +1,22 @@
 $(document).ready(onReady);
 
 function onReady() {
-    console.log('JQ is working!');
-    //add click listener for the #addButton
+    console.log('JQ is working!');   
     clickListener();
-
-    //load existing to-dos on page load
     getToDos();
 }
 
 function clickListener() {
 $('#addButton').on('click', addToDo);
+//add click listener for delete-btn
+//add click listener for mark-complete-btn
 }
 
 function addToDo() {
 console.log('in addToDo');
 let itemToSend ={
     list_item: $('#add-todo').val(),
+    complete: $('#mark-complete').val(),
 }
 $.ajax({
     method: 'POST',
@@ -24,6 +24,7 @@ $.ajax({
     data: itemToSend
 }).then(function(response) {
     $('#add-todo').val('');
+    $('#mark-complete').val();
     getToDos();
 }).catch (function(error) {
     alert(`error in ajax POST ${error}`)
@@ -41,7 +42,7 @@ function getToDos() {
         url: '/todos'
     }).then(function (response) {
         console.log('GET', response);
-       // renderToDom();
+        renderToDom();
     })
     .catch(function(error) {
         alert('error in ajax GET', error);
@@ -49,27 +50,25 @@ function getToDos() {
 
 }
 
-//Write the renderToDom function below
-// function renderToDom(todo_list) {
-//     console.log('in renderToDom');
-//     $('#view-todos').empty();
-//     for (let todo of todo_list) 
-//         $('#view-todos').append(`
-//         <tr>
-//             <td>${todo.list_item}</td>
-//             <td>${todo.complete}</td>
-//             <td>
-//                 <button class="delete-btn" data-id="${todo.id}">Delete From List</button>
-//             </td>
-//             <td>
-//                 <button class="mark-done" data-id="${todo.id}">Mark As Done</button>
-//             </td>
-//         </tr>
+ function renderToDom() {
+    console.log('in renderToDom');
+    $('#view-todos').empty();
+    // for (let todo of response) 
+    //     $('#view-todos').append(`
+    //     <tr>
+    //         <td>${todo.list_item}</td>
+    //         <td>${todo.complete}</td>
+    //         <td>
+    //             <button class="delete-btn" data-id="${todo.id}">Delete From List</button>
+    //         </td>
+    //         <td>
+    //             <button class="mark-complete" data-id="${todo.id}">Mark As Done</button>
+    //         </td>
+    //     </tr>
         
-//         `)
+    //     `)
+}
 
-
-// }
 
 
 //mark items as complete conditionally render css to 
