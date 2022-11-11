@@ -14,7 +14,7 @@ app.use(express.static('server/public'));
 
 
 
-app.use('/songs', router);
+app.use('/todos', router);
 
 
 
