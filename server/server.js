@@ -13,7 +13,7 @@ app.use(bodyParser.json());
 app.use(express.static('server/public'));
 
 
-let router = require('./routes/router');
+
 app.use('/songs', router);
 
 
