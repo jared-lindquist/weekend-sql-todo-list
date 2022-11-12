@@ -51,23 +51,29 @@ function getToDos() {
 
 }
 
-function renderToDom(newTodo) {
-    console.log('in renderToDom', newTodo);
+function renderToDom(todo) {
+    console.log('in renderToDom');
     $('#view-todos').empty();
-    // for (let todo of newTodo) 
-    //     $('#view-todos').append(`
-    //     <tr>
-    //         <td>${todo.list_item}</td>
-    //         <td>${todo.complete}</td>
-    //         <td>
-    //             <button class="delete-btn" data-id="${todo.id}">Delete From List</button>
-    //         </td>
-    //         <td>
-    //             <button class="mark-complete" data-id="${todo.id}">Mark As Done</button>
-    //         </td>
-    //     </tr>
-        
-    //     `)
+    for (let item of todo) {
+        $('#view-todos').append(`
+        <tr>
+            <td>${item.list_item}</td>
+            <td>${item.complete}</td>
+            <td>
+                <button 
+                    class="delete-btn" 
+                    data-id="${item.id}"
+                    >Delete From List</button>
+            </td>
+            <td>
+                <button 
+                    class="mark-complete" 
+                    data-id="${item.id}"
+                    >Mark As Done</button>
+            </td>
+        </tr>
+        `);
+    }
 }
 
 
@@ -92,3 +98,19 @@ function renderToDom(newTodo) {
 //     });//end ajax
 // }//end deleteTodo
 
+// function markComplete() {
+//     console.log('in markComplete');
+//     let id = $(this).data('id');
+//     console.log(id);
+    
+//     $.ajax({
+//         method: 'PUT',
+//         url:`/todo/complete/${id}`
+//     })
+//     .then(function() {
+//         getToDos();
+//     })
+//     .catch(function(error) {
+//         alert('Error in ajaxPUT', error);
+//     })//end ajax
+// }//end markComplete

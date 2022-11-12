@@ -5,7 +5,7 @@ const pool = require('../modules/pool');
 
 //GET
 router.get('/', (req, res) => {
-    let queryText = 'SELECT * FROM todo;';
+    let queryText = 'SELECT * FROM "todo";';
     pool.query(queryText)
         .then((result) => {
             console.log(result.rows);
@@ -37,7 +37,7 @@ router.post('/', (req, res) => {
 });
 
 
-//PUT
+
 
 
 
@@ -58,3 +58,29 @@ router.delete('/:id', (req, res) => {
 
 
 module.exports = router;
+
+//PUT
+
+// router.put('todo/:id', (req, res) => {
+//     const todoId = req.params.id;
+//     const complete = req.body.complete;
+
+//     let queryText = '';
+
+//     if (complete = false) {
+//         queryText = `UPDATE "todo" SET "complete" != "complete" 
+//                     WHERE "id" = $1` 
+//     } else {
+//         res.sendStatus(500);
+//         return;
+//     }//end conditional
+
+//     pool.query(queryText, [todoId])
+//     .then(() => {
+//         console.log('mark complete went well');
+//         res.sendStatus(200);
+//     })
+//     .catch((error) => {
+//         console.log('Error marking as complete, query:', queryText, 'error', error);
+//     });
+// })//end router PUT
