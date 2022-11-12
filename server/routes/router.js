@@ -52,33 +52,32 @@ router.delete('/:id', (req, res) => {
         });
     });
 
-
-
-
 //PUT
 
-// router.put('todo/:id', (req, res) => {
-//     const todoId = req.params.id;
-//     const complete = req.body.complete;
+router.put('/complete/:id', (req, res) => {
+    console.log('in router.put');
+    const todoId = req.params.id;
+    // const complete = req.body.complete;
+    const direction = req.body.direction;
 
-//     let queryText = '';
+    let queryText = '';
 
-//     if (complete = false) {
-//         queryText = `UPDATE "todo" SET "complete" != "complete" 
-//                     WHERE "id" = $1` 
-//     } else {
-//         res.sendStatus(500);
-//         return;
-//     }//end conditional
+    if (direction === 'down') {
+        queryText = `UPDATE "todo_table" SET "complete" = true 
+                    WHERE "id" = $1` 
+    } else {
+        res.sendStatus(500);
+        return;
+    }//end conditional
 
-//     pool.query(queryText, [todoId])
-//     .then(() => {
-//         console.log('mark complete went well');
-//         res.sendStatus(200);
-//     })
-//     .catch((error) => {
-//         console.log('Error marking as complete, query:', queryText, 'error', error);
-//     });
-// })//end router PUT
+    pool.query(queryText, [todoId])
+    .then(() => {
+        console.log('mark complete went well');
+        res.sendStatus(200);
+    })
+    .catch((error) => {
+        console.log('Error marking as complete, query:', queryText, 'error', error);
+    });
+})//end router PUT
 
 module.exports = router;

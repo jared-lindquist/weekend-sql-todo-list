@@ -11,6 +11,7 @@ $('#addButton').on('click', addToDo);
 //add click listener for delete-btn
 $('#view-todos').on('click', '.delete-btn', deleteTodo);
 //add click listener for mark-complete-btn
+$('#view-todos').on('click', '.mark-complete', markComplete);
 }
 
 function addToDo() {
@@ -26,7 +27,7 @@ $.ajax({
 }).then(function() {
     console.log('post complete');
     $('#add-todo').val('');
-    $('#mark-complete').val();
+    $('#mark-complete').val('');
     getToDos();
 }).catch (function(error) {
     alert(`error in ajax POST ${error}`)
@@ -56,7 +57,9 @@ function renderToDom(response) {
     console.log('in renderToDom');
     $('#view-todos').empty();
     for (let item of response) {
+        if (item.complete === false) {
         $('#view-todos').append(`
+        <div class="content">
         <tr>
             <td>${item.list_item}</td>
             
@@ -64,18 +67,23 @@ function renderToDom(response) {
                 <button 
                     class="delete-btn" 
                     data-id="${item.id}"
-                    >Delete From List</button>
+                    >Delete From List
+                </button>
             </td>
             <td>
                 <button 
                     class="mark-complete" 
                     data-id="${item.id}"
-                    >Mark As Done</button>
+                    data-direction="down"
+                    >Mark As Done
+                </button>
             </td>
         </tr>
+        </div>
         `);
-    }
-}
+        }//end append
+    }//end for loop
+}//end renderToDom
 
 
 
@@ -99,19 +107,24 @@ function deleteTodo() {
     });//end ajax
 }//end deleteTodo
 
-// function markComplete() {
-//     console.log('in markComplete');
-//     let id = $(this).data('id');
-//     console.log(id);
+function markComplete() {
+    $(this).parent().addClass('complete');
+    console.log('in markComplete');
+    const id = $(this).data('id');
+    const direction = $(this).data('direction');
+    console.log(id);
     
-//     $.ajax({
-//         method: 'PUT',
-//         url:`/todo/complete/${id}`
-//     })
-//     .then(function() {
-//         getToDos();
-//     })
-//     .catch(function(error) {
-//         alert('Error in ajaxPUT', error);
-//     })//end ajax
-// }//end markComplete
+    $.ajax({
+        method: 'PUT',
+        url:`/todos/complete/${id}`,
+        data: {
+            direction: direction
+        }
+    })
+    .then(function() {
+        getToDos();
+    })
+    .catch(function(error) {
+        alert('Error in ajaxPUT', error);
+    })//end ajax
+}//end markComplete
