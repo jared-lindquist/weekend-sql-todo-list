@@ -22,7 +22,8 @@ $.ajax({
     method: 'POST',
     url: '/todos',
     data: itemToSend
-}).then(function(response) {
+}).then(function() {
+    console.log('post complete');
     $('#add-todo').val('');
     $('#mark-complete').val();
     getToDos();
@@ -50,10 +51,10 @@ function getToDos() {
 
 }
 
- function renderToDom() {
-    console.log('in renderToDom');
+function renderToDom(newTodo) {
+    console.log('in renderToDom', newTodo);
     $('#view-todos').empty();
-    // for (let todo of response) 
+    // for (let todo of newTodo) 
     //     $('#view-todos').append(`
     //     <tr>
     //         <td>${todo.list_item}</td>
@@ -74,3 +75,20 @@ function getToDos() {
 //mark items as complete conditionally render css to 
 //dynamically created elements **look at pg-starting-repo**
 //client.js:23
+
+// function deleteTodo() {
+//     console.log('in deleteTodo');
+//     const todoId = $(this).data('id')
+//     console.log(todoId);
+//     $.ajax({
+//         method: 'DELETE',
+//         url: `/todos/${todoId}`
+//     })
+//     .then(function() {
+//         getToDos();
+//     })
+//     .catch(function(error) {
+//         alert(`Error in deleteTodo ${error}`);
+//     });//end ajax
+// }//end deleteTodo
+

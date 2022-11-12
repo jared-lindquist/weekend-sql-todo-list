@@ -17,7 +17,7 @@ router.get('/', (req, res) => {
     })
 });
 
-//POST
+//POST. this is logging correctly
 router.post('/', (req, res) => {
     let newTodo = req.body;
 
@@ -26,8 +26,8 @@ router.post('/', (req, res) => {
     let queryText = `INSERT INTO  "todo" ("list_item", "complete")
                         VALUES($1, $2)`;
     pool.query(queryText, [newTodo.list_item, newTodo.complete])
-        .then((result) => {
-            console.log('POST result from DB is:', result);
+        .then((response) => {
+            console.log('POST result from DB is:', response);
         res.sendStatus(201);
     })
     .catch((err) => {
@@ -42,7 +42,19 @@ router.post('/', (req, res) => {
 
 
 //DELETE
-
+router.delete('/:id', (req, res) => {
+    let id = req.params.id;
+    let queryText = `DELETE FROM "todo" WHERE "id" = $1;`;
+    
+    pool.query(queryText, [id])
+        .then(() => {
+        console.log('todo deleted!');
+        res.sendStatus(200);
+    })
+    .catch((err) => {
+        console.log('err DELETING', err);
+        });
+    });
 
 
 module.exports = router;
