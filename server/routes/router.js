@@ -5,10 +5,10 @@ const pool = require('../modules/pool');
 
 //GET
 router.get('/', (req, res) => {
-    let queryText = 'SELECT * FROM "todo";';
+    let queryText = 'SELECT * FROM "todo_table";';
     pool.query(queryText)
         .then((result) => {
-            console.log(result.rows);
+            console.log('router get', result.rows);
             res.send(result.rows);
     })
     .catch ((err) => {
@@ -23,7 +23,7 @@ router.post('/', (req, res) => {
 
     console.log('adding new todo', newTodo);
 
-    let queryText = `INSERT INTO  "todo" ("list_item", "complete")
+    let queryText = `INSERT INTO  "todo_table" ("list_item", "complete")
                         VALUES($1, $2)`;
     pool.query(queryText, [newTodo.list_item, newTodo.complete])
         .then((response) => {

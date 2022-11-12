@@ -43,7 +43,7 @@ function getToDos() {
         url: '/todos'
     }).then(function (response) {
         console.log('GET', response);
-        renderToDom();
+        renderToDom(response);
     })
     .catch(function(error) {
         alert('error in ajax GET', error);
@@ -51,14 +51,14 @@ function getToDos() {
 
 }
 
-function renderToDom(todo) {
+function renderToDom(response) {
     console.log('in renderToDom');
     $('#view-todos').empty();
-    for (let item of todo) {
+    for (let item of response) {
         $('#view-todos').append(`
         <tr>
             <td>${item.list_item}</td>
-            <td>${item.complete}</td>
+            
             <td>
                 <button 
                     class="delete-btn" 
