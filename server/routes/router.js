@@ -37,14 +37,10 @@ router.post('/', (req, res) => {
 });
 
 
-
-
-
-
 //DELETE
 router.delete('/:id', (req, res) => {
     let id = req.params.id;
-    let queryText = `DELETE FROM "todo" WHERE "id" = $1;`;
+    let queryText = `DELETE FROM "todo_table" WHERE "id" = $1;`;
     
     pool.query(queryText, [id])
         .then(() => {
@@ -57,7 +53,7 @@ router.delete('/:id', (req, res) => {
     });
 
 
-module.exports = router;
+
 
 //PUT
 
@@ -84,3 +80,5 @@ module.exports = router;
 //         console.log('Error marking as complete, query:', queryText, 'error', error);
 //     });
 // })//end router PUT
+
+module.exports = router;

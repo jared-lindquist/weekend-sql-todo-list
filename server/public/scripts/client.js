@@ -9,6 +9,7 @@ function onReady() {
 function clickListener() {
 $('#addButton').on('click', addToDo);
 //add click listener for delete-btn
+$('#view-todos').on('click', '.delete-btn', deleteTodo);
 //add click listener for mark-complete-btn
 }
 
@@ -82,21 +83,21 @@ function renderToDom(response) {
 //dynamically created elements **look at pg-starting-repo**
 //client.js:23
 
-// function deleteTodo() {
-//     console.log('in deleteTodo');
-//     const todoId = $(this).data('id')
-//     console.log(todoId);
-//     $.ajax({
-//         method: 'DELETE',
-//         url: `/todos/${todoId}`
-//     })
-//     .then(function() {
-//         getToDos();
-//     })
-//     .catch(function(error) {
-//         alert(`Error in deleteTodo ${error}`);
-//     });//end ajax
-// }//end deleteTodo
+function deleteTodo() {
+    console.log('in deleteTodo');
+    const todoId = $(this).data('id')
+    console.log(todoId);
+    $.ajax({
+        method: 'DELETE',
+        url: `/todos/${todoId}`
+    })
+    .then(function() {
+        getToDos();
+    })
+    .catch(function(error) {
+        alert(`Error in deleteTodo ${error}`);
+    });//end ajax
+}//end deleteTodo
 
 // function markComplete() {
 //     console.log('in markComplete');
