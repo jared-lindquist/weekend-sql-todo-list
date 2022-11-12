@@ -3,8 +3,13 @@ body {
     background-size: 100% 2em;
     background-position-y: 1.5rem;
     line-height: 2em;
-    background-color: #FAF441;
+    background-color: #f1f0e2;
 }
+
+/* img {
+    background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
+    z-index:  -1;
+} */
 
 h1 { 
     font-family: 'Brush Script MT', cursive;
@@ -41,6 +46,16 @@ h2 {
     border-radius: 10%;
 }
 
+#addButton:hover {
+    background-color:#4b6fd2;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+#addButton:active {
+    background-color: blanchedalmond;
+}
+
 .content {
     font-family: 'Brush Script MT', cursive;
     font-size: 30px;
@@ -51,4 +66,25 @@ h2 {
     font-family: 'Brush Script MT', cursive;
     font-size: 16px;
     border-radius: 10%;
+
+}
+
+.delete-btn:hover {
+    background-color:#4b6fd2;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.delete-btn:active {
+    background-color: blanchedalmond;
+}
+
+.mark-complete:hover {
+    background-color:#4b6fd2;
+    transition: 0.2s;
+    cursor: pointer;
+}
+
+.mark-complete:active {
+    background-color: blanchedalmond;
 }
