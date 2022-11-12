@@ -37,12 +37,12 @@ h2 {
 }
 
 .complete {
-    background-color: crimson;
+    background-color: lightgreen;
 }
 
 #add-todo, #mark-complete, #addButton {
     font-size: 20px;
-    font-family: 'Brush Script MT', cursive;
+    font-family: 'Brush Script MT';
     border-radius: 10%;
 }
 
