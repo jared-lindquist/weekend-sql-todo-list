@@ -122,7 +122,7 @@ function markComplete() {
         }
     })
     .then(function() {
-        getToDos();
+        // getToDos();
     })
     .catch(function(error) {
         alert('Error in ajaxPUT', error);
