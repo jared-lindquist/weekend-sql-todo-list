@@ -28,6 +28,7 @@ h2 {
 #addItem {
     font-family: 'Brush Script MT', cursive;
     text-align: center;
+    
 }
 
 #list-head {
@@ -38,6 +39,10 @@ h2 {
 
 .complete {
     background-color: lightgreen;
+}
+
+#add-todo {
+    width: 250px;
 }
 
 #add-todo, #mark-complete, #addButton {

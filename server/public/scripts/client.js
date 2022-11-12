@@ -17,8 +17,8 @@ $('#view-todos').on('click', '.mark-complete', markComplete);
 function addToDo() {
 console.log('in addToDo');
 let itemToSend ={
-    list_item: $('#add-todo').val(),
-    complete: $('#mark-complete').val(),
+    list_item: $('#add-todo').val(), 
+    complete: false
 }
 $.ajax({
     method: 'POST',
@@ -27,7 +27,7 @@ $.ajax({
 }).then(function() {
     console.log('post complete');
     $('#add-todo').val('');
-    $('#mark-complete').val('');
+    // $('#mark-complete').val('');
     getToDos();
 }).catch (function(error) {
     alert(`error in ajax POST ${error}`)
