@@ -61,8 +61,7 @@ function renderToDom(response) {
         $('#view-todos').append(`
         <div class="content">
         <tr>
-            <td>${item.list_item}</td>
-            
+            <td class="item">${item.list_item}</td>
             <td>
                 <button 
                     class="delete-btn" 

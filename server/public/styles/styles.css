@@ -6,11 +6,6 @@ body {
     background-color: #f1f0e2;
 }
 
-/* img {
-    background-image: url("https://www.transparenttextures.com/patterns/paper-fibers.png");
-    z-index:  -1;
-} */
-
 h1 { 
     font-family: 'Brush Script MT', cursive;
     text-align: center;
@@ -33,12 +28,21 @@ h2 {
 
 #list-head {
     font-family: 'Brush Script MT', cursive;
-    font-size: 24px;
+    font-size: 30px;
     padding-bottom: 22px;
+}
+
+
+
+.item {
+    font-family: 'Brush Script MT', cursive;
+    font-size: 30px;
+    height: 30px;
 }
 
 .complete {
     background-color: lightgreen;
+    text-decoration: line-through;
 }
 
 #add-todo {
@@ -67,11 +71,19 @@ h2 {
 
 }
 
+#table {
+    font-family: 'Brush Script MT', cursive;
+    table-layout: auto;
+    
+}
+
 .delete-btn, .mark-complete {
     font-family: 'Brush Script MT', cursive;
-    font-size: 16px;
+    font-size: 24px;
     border-radius: 10%;
-
+    margin-left: 20px;
+    width: 200px;
+    
 }
 
 .delete-btn:hover {
