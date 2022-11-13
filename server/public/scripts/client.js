@@ -107,6 +107,7 @@ function deleteTodo() {
 }//end deleteTodo
 
 function markComplete() {
+    $(this).attr("disabled", "disabled");
     $(this).parent().addClass('complete');
     console.log('in markComplete');
     const id = $(this).data('id');
