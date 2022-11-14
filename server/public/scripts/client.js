@@ -61,20 +61,20 @@ function renderToDom(response) {
         $('#view-todos').append(`
         <div class="content">
         <tr>
+            <td>
+                <button 
+                    class="mark-complete" 
+                    data-id="${item.id}"
+                    data-direction="down"
+                    >√
+                </button>
+            </td>
             <td class="item">${item.list_item}</td>
             <td>
                 <button 
                     class="delete-btn" 
                     data-id="${item.id}"
                     >Delete From List
-                </button>
-            </td>
-            <td>
-                <button 
-                    class="mark-complete" 
-                    data-id="${item.id}"
-                    data-direction="down"
-                    >Mark As Done
                 </button>
             </td>
         </tr>
@@ -84,11 +84,6 @@ function renderToDom(response) {
     }//end for loop
 }//end renderToDom
 
-
-
-//mark items as complete conditionally render css to 
-//dynamically created elements **look at pg-starting-repo**
-//client.js:23
 
 function deleteTodo() {
     console.log('in deleteTodo');
@@ -112,13 +107,16 @@ function markComplete() {
     console.log('in markComplete');
     const id = $(this).data('id');
     const direction = $(this).data('direction');
+    //for checkbox
+    //let isComplete = $(this).is('checked')evaluates to tru
     console.log(id);
     
     $.ajax({
         method: 'PUT',
         url:`/todos/complete/${id}`,
         data: {
-            direction: direction
+            direction: direction//could change this to complete: true and then update
+            //the router PUT request to match with complete = req.body.complete
         }
     })
     .then(function() {
