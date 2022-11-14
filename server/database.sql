@@ -6,4 +6,4 @@ CREATE TABLE "todo_table" (
 INSERT INTO "todo_table"
 	("list_item", "complete")
 VALUES
-	('Walk the dogs', 'false')
+	('Walk the dogs', false)
