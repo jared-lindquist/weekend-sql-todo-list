@@ -69,13 +69,13 @@ function renderToDom(response) {
                     >√
                 </button>
             </td>
-            <td class="item">${item.list_item}</td>
             <td>
                 <button 
                     class="delete-btn" 
                     data-id="${item.id}"
-                    >Delete From List
+                    >Delete
                 </button>
+            <td class="item">${item.list_item}</td>
             </td>
         </tr>
         </div>
