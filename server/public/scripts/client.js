@@ -66,14 +66,14 @@ function renderToDom(response) {
                     class="mark-complete" 
                     data-id="${item.id}"
                     data-direction="down"
-                    >√
+                    >✓
                 </button>
             </td>
             <td>
                 <button 
                     class="delete-btn" 
                     data-id="${item.id}"
-                    >Delete
+                    >🗑
                 </button>
             <td class="item">${item.list_item}</td>
             </td>
