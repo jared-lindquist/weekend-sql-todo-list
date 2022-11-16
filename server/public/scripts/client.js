@@ -16,6 +16,13 @@ $('#view-todos').on('click', '.mark-complete', markComplete);
 
 function addToDo() {
 console.log('in addToDo');
+const isInvalid = (
+    $('#add-todo').val() === ''
+);
+if (isInvalid) {
+    alert('Please enter a todo before adding');
+    return;
+}
 let itemToSend ={
     list_item: $('#add-todo').val(), 
     complete: false
