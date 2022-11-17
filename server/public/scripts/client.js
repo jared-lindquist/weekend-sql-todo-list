@@ -64,9 +64,10 @@ function renderToDom(response) {
     console.log('in renderToDom');
     $('#view-todos').empty();
     for (let item of response) {
-        if (item.complete === false) {
+        // if (item.complete === false) {
         $('#view-todos').append(`
-        <div class="content">
+        
+        <div class="content ${item.complete ? 'complete': ''}">
         <tr>
             <td>
                 <button 
@@ -82,14 +83,14 @@ function renderToDom(response) {
                     data-id="${item.id}"
                     >🗑
                 </button>
-            <td class="item">${item.list_item}</td>
+            <td class="item ">${item.list_item}</td>
             </td>
         </tr>
         </div>
         `);
         }//end append
     }//end for loop
-}//end renderToDom
+//}//end renderToDom
 
 
 function deleteTodo() {

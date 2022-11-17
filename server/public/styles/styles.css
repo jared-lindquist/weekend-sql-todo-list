@@ -41,8 +41,8 @@ h2 {
 }
 
 .complete {
-    /* background-color: lightgreen; */
-    text-decoration: line-through;
+    background-color: lightgreen;
+    /* text-decoration: line-through; */
 }
 
 #add-todo {
